@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Approuter from './Compoments/AppRouter.js/Approuter';
+import Approuter from './Config/approuter';
 
 function App() {
+
+ 
   return (
     <div className="App">
-      <Approuter/>
+
+     <Approuter/>
     </div>
   );
 }
