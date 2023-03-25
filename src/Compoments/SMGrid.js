@@ -1,122 +1,47 @@
-import React, { useEffect, useState } from "react";
-import SMinput from "./SMInput";
-import SMTable from "./SMTable";
-function SMGrid({
-  aboutTable,
-  list,
-  tilte,
-  setList,
-  searchfilter,
-  setSearchfilter,
-}) {
-  const [search, setSearch] = useState("");
-  const [selectorlist, setSelectorlist] = useState("name");
-
-  useEffect(() => {
-    let dataacc = list.filter((x) =>
-      x[selectorlist].includes(search.toLocaleLowerCase())
-    );
-
-    setSearchfilter(dataacc);
-  }, [search]);
-
-  let inputSearchValue = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const selecterValue = (e) => {
-    setSelectorlist(e.target.value);
-  };
-  console.log(selectorlist);
-
-  const sorting = () => {
-    const result = searchfilter.sort((a, b) => {
-      if(a.name < b.name) return -1
-      if(a.name > b.name) return 1
-      return 0
-    } );
-
-    console.log(result)
-    setSearchfilter([...result]);
-
-  };
-
-
-
-  // let data = [10, 0, 4, 2, 40, 20, 30]
-  // console.log(data)
-  // data.sort((a,b) =>{
-  //     if(a < b) return -1
-  // })
-
-  // console.log(data)
-
-
-
-
-  
-
-  const sortingReverse = () => {
-    const result = searchfilter.sort((a, b) => b.name.localeCompare(a.name));
-    setSearchfilter([...result]);
-  };
+function SMGrid(props) {
+  const { title, columns, datasource, onRowClick, isLoading } = props;
+  // let searchList = columns.filter((x) => x.searchAble);
 
   return (
     <div>
-      <h1>{tilte}</h1>
-
-      <button onClick={sorting}>Sorting</button>
-      <button onClick={sortingReverse}>sortingReverse</button>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <div>
-          <input type="text" onChange={(e) => inputSearchValue(e)} />
-        </div>
-
-        <div>
-          <select onChange={(e) => selecterValue(e)}>
-            <option value="name"> Select </option>
-            {aboutTable.map((x) => (
-              <option>{x.key}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <table style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            {aboutTable &&
-              Array.isArray(aboutTable) &&
-              aboutTable.length > 1 &&
-              aboutTable.map((x) => <th>{x.key} </th>)}
-          </tr>
-        </thead>
-
-        <tbody>
-          {searchfilter &&
-            Array.isArray(searchfilter) &&
-            searchfilter.length > 1 &&
-            searchfilter.map((x) => (
-              <tr>
-                {aboutTable &&
-                  Array.isArray(aboutTable) &&
-                  aboutTable.length > 1 &&
-                  aboutTable.map((e, i) => (
-                    <td> {e.displayField ? e.displayField(x) : x[e.key]} </td>
-                  ))}{" "}
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      
+      <h2>{title}</h2>
+      {isLoading ? (
+        <img
+          width="40%"
+          src="https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif"
+          alt="Loading..."
+        />
+      ) : datasource && Array.isArray(datasource) && datasource.length < 1 ? (
+        <img
+          src="https://static.vecteezy.com/system/resources/thumbnails/016/026/432/small/user-not-found-account-not-register-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg"
+          width="40%"
+          alt="No Data Found :("
+        />
+      ) : (
+        <table className="table table-stripped">
+          <thead>
+            <tr>
+              {columns && Array.isArray(columns) && columns.length > 0
+                ? columns.map((x, i) => <th key={i}>{x.displayName}</th>)
+                : null}
+            </tr>
+          </thead>
+          <tbody>
+            {datasource && Array.isArray(datasource) && datasource.length > 0
+              ? datasource.map((x, i) => (
+                  <tr key={i}>
+                    {columns.map((e, ind) => (
+                      <td key={ind}>
+                        {e.displayField ? e.displayField(x) : x[e.key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))
+              : null}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
-
 export default SMGrid;

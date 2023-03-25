@@ -21,11 +21,14 @@ import Notification from "../Screens/DashboardScreen/notifiction";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Feedback from "../Screens/DashboardScreen/feedback";
 import Comment from "../Screens/DashboardScreen/comment";
-
+import SMCoursefrom from "../Screens/InstituteScreens/Coursefrom";
+import SMCourse from "../Screens/InstituteScreens/Course";
+import MessageIcon from "@mui/icons-material/Message";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
-function Mainlayout(props) {
+function Instiutelayout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -41,24 +44,10 @@ function Mainlayout(props) {
 
   const [menulist, setMeinlist] = React.useState([
     {
-      name: "Message",
-      route: "messgae",
-    },
-
-    {
-      name: "Notification",
-      route: "notify",
-    },
-
-    {
-      name: "Feedback",
-      route: "feed",
-    },
-
-    {
-      name: "Comments",
-      route: "comments",
-    },
+      name: "Course",
+      route: "Course",
+     
+    }
   ]);
 
   const drawer = (
@@ -168,17 +157,15 @@ function Mainlayout(props) {
         <Toolbar />
 
         <Routes>
-          <Route path="/messgae" element={<Message />}></Route>
-          <Route path="/notify" element={<Notification />}></Route>
-          <Route path="/feed" element={<Feedback />}></Route>
-          <Route path="/comments" element={<Comment />}></Route>
+          <Route path="/Course" element={<SMCourse />} />
+          <Route path="/coursefrom" element={<SMCoursefrom />} />
         </Routes>
       </Box>
     </Box>
   );
 }
 
-Mainlayout.propTypes = {
+Instiutelayout.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -186,4 +173,4 @@ Mainlayout.propTypes = {
   window: PropTypes.func,
 };
 
-export default Mainlayout;
+export default Instiutelayout;

@@ -1,9 +1,13 @@
 import React from 'react'
+import Login from '../../Compoments/SMLogin'
+import Signup from '../../Compoments/SMSignin';
 
-function Message() {
+function message() {
   return (
-    <div>sdasdasdasd</div>
-  )
+    <div>
+      Messgae
+    </div>
+  );
 }
 
-export default Message;
+export default message
