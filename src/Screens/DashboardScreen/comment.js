@@ -1,8 +1,12 @@
 import React from 'react'
+import SMRegistrationcontrol from '../../Compoments/SMRegistrationcontrol';
+
 
 function Comment() {
   return (
-    <div>C</div>
+    <div>
+      <SMRegistrationcontrol/>
+    </div>
   )
 }
 

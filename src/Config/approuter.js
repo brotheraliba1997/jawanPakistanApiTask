@@ -7,6 +7,7 @@ import Login from "../Compoments/SMLogin";
 import Signup from "../Compoments/SMSignup";
 import Institute from "../Screens/InstituteScreens/institute";
 import ProtectedRoute from "./protectedroute";
+import Student from "../Screens/StudentScreen/student";
 
 function Approuter() {
   return (
@@ -20,6 +21,7 @@ function Approuter() {
           element={<ProtectedRoute Component={Dashboard} />}
         ></Route>
         <Route path="/institute/*" element={<Institute />} />
+        <Route path="/student/*" element={<Student />} />
       </Routes>
     </BrowserRouter>
   );

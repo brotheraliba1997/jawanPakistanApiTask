@@ -97,7 +97,7 @@ let fbPost = (nodeName, obj, id) => {
         });
     } else {
       //edit existing data
-      let keyRef = ref(db, `${nodeName}`);
+      let keyRef = ref(db, `${nodeName}`);  
       obj.id = push(keyRef).key;
       let postRef = ref(db, `${nodeName}/${obj.id}/`);
       set(postRef, obj)
@@ -109,6 +109,19 @@ let fbPost = (nodeName, obj, id) => {
         });
     }
   });
+};
+
+let fbCoustomPost = (nodeName,obj) => {
+  return new Promise((resolve,reject) => {
+    const reference = ref(db, `${nodeName}/`)
+      set(reference, obj)
+        .then((res) =>{
+          resolve("data sent succesfully")
+        }).catch((err)=>{
+            reject("no data ")
+        })
+
+  })
 };
 
 
@@ -126,4 +139,5 @@ export {
   fbDelete,
   checkAuth,
   fbPost,
+  fbCoustomPost,
 };
