@@ -79,9 +79,9 @@ function Mainlayout(props) {
         {menulist.map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => nestinRoutesChange(text.route)}>
-              <ListItemIcon>
+              {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              </ListItemIcon> */}
               <ListItemText primary={text.name} />
             </ListItemButton>
           </ListItem>
@@ -97,7 +97,7 @@ function Mainlayout(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar
+      {/* <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -118,14 +118,14 @@ function Mainlayout(props) {
             Responsive drawer
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
+        {/* <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -142,7 +142,7 @@ function Mainlayout(props) {
           }}
         >
           {drawer}
-        </Drawer>
+        </Drawer> */}
         <Drawer
           variant="permanent"
           sx={{

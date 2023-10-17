@@ -8,20 +8,21 @@ import Signup from "../Compoments/SMSignup";
 import Institute from "../Screens/InstituteScreens/institute";
 import ProtectedRoute from "./protectedroute";
 import Student from "../Screens/StudentScreen/student";
+import Busservices from "../Screens/busServices/busServices";
 
 function Approuter() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/comment" element={<Comment />}></Route>
-        <Route
-          path="dashboard/*"
-          element={<ProtectedRoute Component={Dashboard} />}
-        ></Route>
-        <Route path="/institute/*" element={<Institute />} />
-        <Route path="/student/*" element={<Student />} />
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/Dashboard/*" element={<Dashboard />}></Route>
+        <Route path="/Services" element={<Busservices />}></Route>
+
+
+      
+        
+      
       </Routes>
     </BrowserRouter>
   );

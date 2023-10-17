@@ -14,7 +14,7 @@ function Notifiction() {
    const getUser = () => {
      Get("users")
        .then((res) => {
-         console.log(res.data);
+         console.log(res.data,">>>>>");
          setList([...res.data]);
          setSearchfilter([...res.data]);
        })
@@ -43,12 +43,12 @@ function Notifiction() {
      {
        key: "name",
        displayName: "username",
-       displayField: (i) => <div style={{ color: "red" }}> {i.name} </div>,
+       displayField: (i) => <div style={{ color: "black" }}> {i.name} </div>,
      },
      {
        key: "email",
        displayName: "Email",
-       displayField: (i) => <div style={{ color: "red" }}> {i.email} </div>,
+       displayField: (i) => <div style={{ color: "black" }}> {i.email} </div>,
      },
 
      {
@@ -64,8 +64,8 @@ function Notifiction() {
   return (
     <div>
       <SMGrid
-        aboutTable={aboutTable}
-        list={list}
+        columns={aboutTable}
+        datasource={list}
         tilte="Table List"
         setList={setList}
         searchfilter={searchfilter}

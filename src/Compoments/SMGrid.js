@@ -1,6 +1,9 @@
+import React from "react";
 function SMGrid(props) {
-  const { title, columns, datasource, onRowClick, isLoading } = props;
-  // let searchList = columns.filter((x) => x.searchAble);
+  const { title, columns, datasource, onRowClick, isLoading , list} = props;
+
+
+  
 
   return (
     <div>
@@ -32,7 +35,7 @@ function SMGrid(props) {
                   <tr key={i}>
                     {columns.map((e, ind) => (
                       <td key={ind}>
-                        {e.displayField ? e.displayField(x) : x[e.key]}
+                        {e.displayField ? e.displayField(x) : x["phone"]}
                       </td>
                     ))}
                   </tr>
