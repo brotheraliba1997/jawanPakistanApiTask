@@ -1,10 +1,6 @@
 import React from "react";
 function SMGrid(props) {
   const { title, columns, datasource, onRowClick, isLoading , list} = props;
-
-
-  
-
   return (
     <div>
       <h2>{title}</h2>
